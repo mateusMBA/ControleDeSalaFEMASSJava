@@ -37,6 +37,12 @@ public class IndisponibilidadeController {
         return new ResponseEntity<>(savedIndisponibilidade, HttpStatus.CREATED);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Indisponibilidade> updateIndisponibilidade(@PathVariable int id, @RequestBody @Valid Indisponibilidade updatedIndisponibilidade) {
+        Indisponibilidade result = indisponibilidadeService.updateIndisponibilidade(id, updatedIndisponibilidade);
+        return ResponseEntity.ok(result);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteIndisponibilidade(@PathVariable int id) {
         indisponibilidadeService.deleteIndisponibilidade(id);

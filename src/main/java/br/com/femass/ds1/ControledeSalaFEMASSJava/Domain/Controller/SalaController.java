@@ -37,6 +37,12 @@ public class SalaController {
         return new ResponseEntity<>(savedSala, HttpStatus.CREATED);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Sala> updateSala(@PathVariable int id, @RequestBody @Valid Sala updatedSala) {
+        Sala sala = salaService.updateSala(id, updatedSala);
+        return ResponseEntity.ok(sala);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSala(@PathVariable int id) {
         salaService.deleteSala(id);

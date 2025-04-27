@@ -37,6 +37,12 @@ public class DisciplinaController {
         return new ResponseEntity<>(createdDisciplina, HttpStatus.CREATED);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Disciplina> updateDisciplina(@PathVariable int id, @RequestBody @Valid Disciplina updatedDisciplina) {
+        Disciplina result = disciplinaService.updateDisciplina(id, updatedDisciplina);
+        return ResponseEntity.ok(result);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDisciplina(@PathVariable int id) {
         if (disciplinaService.deleteDisciplina(id)) {

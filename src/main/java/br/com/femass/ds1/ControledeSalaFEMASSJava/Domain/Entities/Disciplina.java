@@ -43,7 +43,7 @@ public class Disciplina {
     }
 
     @NotNull(message = "informação sobre laboratório é obrigatória")
-    public boolean isNecessitaLaboratiorio() {
+    public boolean getNecessitaLaboratiorio() {
         return necessitaLaboratiorio;
     }
 
@@ -52,7 +52,7 @@ public class Disciplina {
     }
 
     @NotNull(message = "informação sobre ar-condicionado é obrigatória")
-    public boolean isNecessitaArCondicionado() {
+    public boolean getNecessitaArCondicionado() {
         return necessitaArCondicionado;
     }
 
@@ -61,7 +61,7 @@ public class Disciplina {
     }
 
     @NotNull(message = "informação sobre lousa é obrigatória")
-    public boolean isNecessitaLousaDigital() {
+    public boolean getNecessitaLousaDigital() {
         return necessitaLousaDigital;
     }
 

@@ -70,7 +70,7 @@ public class Sala {
     }
 
     @NotNull(message = "Informação sobre laboratório é obrigatória")
-    public boolean isPossuiLaboratorio() {
+    public boolean getPossuiLaboratorio() {
         return possuiLaboratorio;
     }
 
@@ -79,7 +79,7 @@ public class Sala {
     }
 
     @NotNull(message = "Informação sobre ar-condicionado é obrigatória")
-    public boolean isPossuiArCondicionado() {
+    public boolean getPossuiArCondicionado() {
         return possuiArCondicionado;
     }
 
@@ -88,7 +88,7 @@ public class Sala {
     }
 
     @NotNull(message = "Informação sobre lousa digital é obrigatória")
-    public boolean isPossuiLousaDigital() {
+    public boolean getPossuiLousaDigital() {
         return possuiLousaDigital;
     }
 

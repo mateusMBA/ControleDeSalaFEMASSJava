@@ -76,7 +76,7 @@ public class Turma {
     }
 
     @NotNull(message = "Informação sobre grade antiga é obrigatória")
-    public boolean isTurmaGrandeAntiga() {
+    public boolean getTurmaGrandeAntiga() {
         return turmaGrandeAntiga;
     }
 

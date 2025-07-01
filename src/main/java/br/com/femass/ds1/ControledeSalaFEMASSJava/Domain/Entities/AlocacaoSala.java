@@ -35,6 +35,8 @@ public class AlocacaoSala {
     @Column(name = "tempo")
     private TempoSala tempo;
 
+    public AlocacaoSala(){}
+
     public AlocacaoSala(Sala sala, Turma turma, DayOfWeek diaSemana, TempoSala tempo) {
         this.sala = sala;
         this.turma = turma;

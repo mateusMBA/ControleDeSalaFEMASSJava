@@ -4,13 +4,17 @@ import br.com.femass.ds1.ControledeSalaFEMASSJava.Domain.Entities.Enums.TempoSal
 import br.com.femass.ds1.ControledeSalaFEMASSJava.Domain.Entities.Indisponibilidade;
 import br.com.femass.ds1.ControledeSalaFEMASSJava.Domain.Entities.Sala;
 import br.com.femass.ds1.ControledeSalaFEMASSJava.Domain.Services.IndisponibilidadeService;
+import br.com.femass.ds1.ControledeSalaFEMASSJava.Domain.Services.PDFGeneratorService;
 import br.com.femass.ds1.ControledeSalaFEMASSJava.Domain.Services.SalaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +22,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/Sala")
 public class SalaController {
+
+    @Autowired
+    private PDFGeneratorService pdfGeneratorService;
 
     @Autowired
     private SalaService salaService;
@@ -77,4 +84,15 @@ public class SalaController {
         indisponibilidadeService.deleteIndisponibilidade(indisponibilidadeId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/relatorio/{dia}")
+    public ResponseEntity<byte[]> gerarQuadroHorarios(@PathVariable DayOfWeek dia) throws IOException {
+        byte[] pdfBytes = pdfGeneratorService.gerarPdfPorDia(dia);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=quadro_horarios_" + dia.toString().toLowerCase() + ".pdf")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(pdfBytes);
+    }
+
 }
